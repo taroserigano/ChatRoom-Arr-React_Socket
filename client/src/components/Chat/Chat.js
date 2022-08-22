@@ -36,10 +36,12 @@ const Chat = ({ location }) => {
   }, [ENDPOINT, location.search]);
   
   useEffect(() => {
+    
+    // socket.on, whenever any message sent to here, this will add the message to existing messages
     socket.on('message', message => {
       setMessages(messages => [ ...messages, message ]);
     });
-    
+    // same theory
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
